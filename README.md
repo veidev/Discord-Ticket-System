@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=28&duration=3200&pause=900&color=5865F2&center=true&vCenter=true&width=600&lines=Sea+Bot+Ticket+System;Discord.py+%7C+Private+Channels;Transcript+%2B+Panel+Button" alt="Typing SVG" />
+<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=28&duration=3200&pause=900&color=5865F2&center=true&vCenter=true&width=600&lines=Discord+Bot+Ticket+System;Discord.py+%7C+Private+Channels;Transcript+%2B+Panel+Button" alt="Typing SVG" />
 
 <br/>
 
