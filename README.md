@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=28&duration=3200&pause=900&color=5865F2&center=true&vCenter=true&width=600&lines=Discord+Bot+Ticket+System;Discord.py+%7C+Private+Channels;Transcript+%2B+Panel+Button" alt="Typing SVG" />
+<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=28&duration=3200&pause=900&color=5865F2&center=true&vCenter=true&width=600&lines=Discord+Ticket+System;Discord.py+%7C+Private+Channels;Transcript+%2B+Panel+Button" alt="Typing SVG" />
 
 <br/>
 
@@ -12,30 +12,30 @@
 
 ---
 
-## Ne bu?
+## What is this?
 
-**Sea Bot** ana projesinden ayrılmış destek bileti (ticket) modülü: butonlu panel, kullanıcıya özel metin kanalı, claim / kapat, HTML transcript ve log kanalına gönderim.
+A **support ticket** module split from the main **Sea Bot** project: button panel, per-user private text channel, claim/close, HTML transcript upload, and optional log channel delivery.
 
 ---
 
-## Özellikler
+## Features
 
 | | |
 | --- | --- |
-| Panel | Kalıcı **Open Ticket** butonu (yeniden başlatmada çalışır) |
-| Kanal | `ticket-kullaniciadi` özel izinlerle kategori altında |
-| Yetki | Moderatör veya `ticket_support_role` ile claim / kapat |
-| Kapatma | `.close` veya **Close Ticket** butonu → HTML transcript |
+| Panel | Persistent **Open Ticket** button (survives bot restarts) |
+| Channel | `ticket-username` under a category with custom overwrites |
+| Permissions | Claim/close by moderators or `ticket_support_role` |
+| Close | `{prefix}close` or **Close Ticket** button → HTML transcript |
 
 ---
 
-## Kurulum
+## Setup
 
 ```bash
 pip install -r requirements.txt
 ```
 
-`ticket_cog.py` dosyasını ana bot klasörüne kopyala. Ana botunda `bot = commands.Bot(...)` tanımından **sonra**:
+Copy `ticket_cog.py` into your main bot folder. **After** `bot = commands.Bot(...)`:
 
 ```python
 from ticket_cog import TicketCog
@@ -46,13 +46,13 @@ bot.add_cog(
         get_guild_config=get_guild_config,
         save_config=save_config,
         prefix=PREFIX,
-        allowed_guild_ids=ALLOWED_GUILD_IDS,  # frozenset veya set
+        allowed_guild_ids=ALLOWED_GUILD_IDS,  # frozenset or set
         is_moderator=is_member_moderator,
     )
 )
 ```
 
-`get_guild_config(guild_id)` dönen sözlük şu anahtarları desteklemeli (yoksa `None`):
+`get_guild_config(guild_id)` must return a dict that may include (use `None` if unset):
 
 - `ticket_category_id`
 - `ticket_log_channel_id`
@@ -60,28 +60,28 @@ bot.add_cog(
 
 ---
 
-## Komutlar
+## Commands
 
-| Komut | Açıklama |
+| Command | Description |
 | --- | --- |
-| `{prefix}ticket [sebep]` | Bilet kanalı aç |
-| `{prefix}ticket-panel [#kanal]` | Butonlu panel mesajı |
-| `{prefix}close [sebep]` | Transcript + kanalı sil |
-| `{prefix}ticket-config` | Kategori / log / destek rolü |
+| `{prefix}ticket [reason]` | Open a ticket channel |
+| `{prefix}ticket-panel [#channel]` | Post the button panel |
+| `{prefix}close [reason]` | Save transcript and delete the channel |
+| `{prefix}ticket-config` | Category / log channel / support role |
 
-> Ana Sea Bot projende bu komutlar eskiden `.config ticket-*` altındaydı; burada çakışmayı önlemek için **`ticket-config`** grubu kullanıldı. İstersen bu üç alt komutu kendi `config` grubuna taşıyabilirsin.
-
----
-
-## Gerekli bot izinleri
-
-Kanal oluşturma, mesaj gönderme, kanal yönetimi, transcript dosyası yükleme ve (isteğe bağlı) kanal silme.
+> In the original Sea Bot these lived under `.config ticket-*`. This package uses a **`ticket-config`** group so it does not clash with your existing `config` command group. You can move the three subcommands into your own group if you prefer.
 
 ---
 
-## Lisans
+## Bot permissions
 
-Sea Bot projesiyle aynı kullanım koşullarına tabi tutabilirsin; kendi reponda MIT vb. belirtmek sana kalmış.
+Create channels, send messages, manage channels, attach files (transcript), and delete channels when closing tickets.
+
+---
+
+## License
+
+Use the same terms as your Sea Bot project, or pick a license (e.g. MIT) for this repo.
 
 ---
 
